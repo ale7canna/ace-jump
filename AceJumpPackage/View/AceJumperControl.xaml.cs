@@ -3,19 +3,14 @@ using Microsoft.VisualStudio.Text.Editor;
 
 namespace AceJumpPackage.View
 {
-    /// <summary>
-    /// Interaction logic for AceJumperControl.xaml
-    /// </summary>
-    public partial class AceJumperControl : UserControl
+  /// <summary>
+  ///   Interaction logic for AceJumperControl.xaml
+  /// </summary>
+  public partial class AceJumperControl : UserControl
+  {
+    public AceJumperControl(IWpfTextView view)
     {
-
-        public AceJumperControl(IWpfTextView view)
-        {
-            InitializeComponent();
-        }
-
-      
-
-      
+      InitializeComponent();
     }
+  }
 }
