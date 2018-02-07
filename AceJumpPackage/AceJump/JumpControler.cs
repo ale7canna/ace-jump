@@ -57,7 +57,7 @@ namespace AceJumpPackage.AceJump
           return true;
         }
 
-        aceJump.HighlightLetter(key.ToString().ToUpper());
+        aceJump.HighlightLetter(key.ToString());
 
         letterHighLightActive = true;
         return false;

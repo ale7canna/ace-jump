@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 using AceJumpPackage.Helpers;
 using AceJumpPackage.Interfaces;
@@ -25,14 +27,43 @@ namespace AceJumpPackage.AceJump
 
     public void HighlightLetter(string letterTofind)
     {
-      letter = letterTofind.First().ToString().ToLower();
+      letter = letterTofind.First().ToString();
 
-      var totalLocations = textView.TextSnapshot.GetText()
-        .Count(c => c.ToString().ToLower() == letter);
+      Func<char, bool> predicate;
+      if (letter.ToLower() == letter)
+      {
+        predicate = c => c.ToString().ToLower() == letter;
+      }
+      else
+      {
+        predicate = c => c.ToString() == letter;
+      }
 
+      var view = textView.TextViewLines;
+
+      var viewText = "";
+      foreach (var line in view)
+      {
+        int start = line.Start;
+        int end = line.End;
+        for (var i = start; i < end; ++i)
+          viewText += textView.TextSnapshot[i].ToString();
+      }
+      
+      //var lines = view.Select(line =>
+      //{
+      //  string s = textView.TextSnapshot.ToString();
+      //  return s.Substring(line.Start.Position, line.End.Position);
+      //}).ToList();
+
+      //var viewText = lines.Aggregate("", (t, l) => t + l);
+
+      //var totalLocations = text.Count(predicate);
+      var totalLocations = viewText.Count(predicate);
+      
       letterLocationSpans = new LetterReferenceDictionary(totalLocations);
       OffsetKey = letterLocationSpans.OffsetKey;
-      foreach (var line in textView.TextViewLines) CreateVisualsForLetter(line);
+      foreach (var line in view) CreateVisualsForLetter(line);
     }
 
     public void UpdateLetter(string ch)
@@ -114,7 +145,7 @@ namespace AceJumpPackage.AceJump
 
       //Loop through each character, and place a box over item 
       for (var i = start; i < end; ++i)
-        if (textView.TextSnapshot[i].ToString().ToLower() == letter)
+        if (textView.TextSnapshot[i].ToString() == letter)
         {
           var span = new SnapshotSpan(textView.TextSnapshot, Span.FromBounds(i, i + 1));
 
