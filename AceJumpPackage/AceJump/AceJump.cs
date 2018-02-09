@@ -54,14 +54,16 @@ namespace AceJumpPackage.AceJump
 
     public void UpdateLetter(string ch)
     {
-      for (var i = 0; i < aceLayer.Elements.Count; i++)
+      foreach (var e in aceLayer.Elements)
       {
-        //
-        if (aceLayer.Elements[i].Adornment is LetterReference == false)
-          continue;
-
-        var letterReference = (LetterReference) aceLayer.Elements[i].Adornment;
-        letterReference.UpdateHighlight(ch);
+        var letterReference = (LetterReference)e.Adornment;
+        var reference = (string)letterReference.Content;
+        if (!reference.StartsWith(ch.ToUpper()))
+          aceLayer.RemoveAdornment(e.Adornment);
+        else
+        {
+          letterReference.UpdateHighlight(ch);
+        }
       }
     }
 

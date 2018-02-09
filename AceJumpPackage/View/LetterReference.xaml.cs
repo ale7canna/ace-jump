@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -20,7 +21,7 @@ namespace AceJumpPackage.View
       Foreground = Brushes.White;
 
       // give letters like 'M' and 'W' some room
-      Width = bounds.Width * referenceLetter.Length + PADDING * 2 + 0;
+      Width = bounds.Width;
       Height = bounds.Height * 0.8;
 
       // make it stand out
@@ -32,9 +33,10 @@ namespace AceJumpPackage.View
 
     public void UpdateHighlight(string referenceLetter)
     {
-      var s = (string) Content;
-      if (s.StartsWith(referenceLetter.ToUpper()))
-        Background = Brushes.DarkRed;
+      var s = (string)Content;
+      Background = Brushes.DarkRed;
+      s = s.Replace(referenceLetter.ToUpper(), String.Empty);
+      Content = s;
     }
   }
 }
