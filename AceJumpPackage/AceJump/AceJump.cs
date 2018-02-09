@@ -91,7 +91,7 @@ namespace AceJumpPackage.AceJump
         Canvas.SetLeft(aceJumperControl, g.Bounds.Left);
         Canvas.SetTop(aceJumperControl, g.Bounds.Top);
 
-        aceLayer.AddAdornment(AdornmentPositioningBehavior.ViewportRelative, span, null, aceJumperControl, null);
+        //aceLayer.AddAdornment(AdornmentPositioningBehavior.ViewportRelative, span, null, aceJumperControl, null);
         Active = true;
       }
     }
