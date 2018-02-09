@@ -25,6 +25,7 @@ namespace AceJumpPackage
     ///   Command ID.
     /// </summary>
     public const int CommandId = 0x0100;
+    public const int CommandWordId = 0x0101;
 
     private const string VsVimSetDisabled = "VsVim.SetDisabled";
 
@@ -78,6 +79,10 @@ namespace AceJumpPackage
       {
         var menuCommandID = new CommandID(CommandSet, CommandId);
         var menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
+        commandService.AddCommand(menuItem);
+
+        menuCommandID = new CommandID(CommandSet, CommandWordId);
+        menuItem = new MenuCommand(MenuItemCallback, menuCommandID);
         commandService.AddCommand(menuItem);
       }
     }
@@ -133,6 +138,7 @@ namespace AceJumpPackage
       _jumpControler?.Close();
       var ace = new AceJump.AceJump();
       ace.SetView(textView);
+      ace.SetMode(sender as MenuCommand);
 
       _jumpControler = new JumpControler(ace);
       _jumpControler.ShowJumpEditor();

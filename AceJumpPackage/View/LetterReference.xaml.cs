@@ -9,21 +9,22 @@ namespace AceJumpPackage.View
   /// </summary>
   public partial class LetterReference : UserControl
   {
-    public const int PADDING = 2;
+    public const int PADDING = 0;
 
     public LetterReference(string referenceLetter, Rect bounds, double fontRenderingEmSize)
     {
       InitializeComponent();
 
       Content = referenceLetter.ToUpper();
-      Background = Brushes.GreenYellow;
+      Background = Brushes.DarkRed;
+      Foreground = Brushes.White;
 
       // give letters like 'M' and 'W' some room
       Width = bounds.Width * referenceLetter.Length + PADDING * 2 + 0;
-      Height = bounds.Height;
+      Height = bounds.Height * 0.8;
 
       // make it stand out
-      FontWeight = FontWeights.Bold;
+      FontWeight = FontWeights.Regular;
 
       //
       FontSize = fontRenderingEmSize;
@@ -33,7 +34,7 @@ namespace AceJumpPackage.View
     {
       var s = (string) Content;
       if (s.StartsWith(referenceLetter.ToUpper()))
-        Background = Brushes.Yellow;
+        Background = Brushes.DarkRed;
     }
   }
 }

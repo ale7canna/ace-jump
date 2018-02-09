@@ -62,6 +62,7 @@
     <Compile Include="AceJump\AceJump.cs" />
     <Compile Include="AceJump\JumpControler.cs" />
     <Compile Include="Helpers\CommandExecutorService.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\ViewProvider.cs" />
     <Compile Include="Interfaces\ICommandExecutorService.cs" />
     <Compile Include="Helpers\LetterReferenceDictionary.cs" />

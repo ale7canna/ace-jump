@@ -59,6 +59,13 @@
           <ButtonText>Invoke AceJumpCommand</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidAceJumpCommandPackageCmdSet" id="AceJumpWordCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidAceJumpCommandPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke AceJumpCommand - Words start only</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -74,6 +81,7 @@
 
   <KeyBindings>
     <KeyBinding guid="guidAceJumpCommandPackageCmdSet" id="AceJumpCommandId" editor="guidVSStd97" mod1="CONTROL ALT" key1="VK_OEM_1"/>
+    <KeyBinding guid="guidAceJumpCommandPackageCmdSet" id="AceJumpWordCommandId" editor="guidVSStd97" mod1="SHIFT CONTROL" key1="VK_OEM_1"/>
   </KeyBindings>
 <!---->
   <Symbols>
@@ -84,6 +92,7 @@
     <GuidSymbol name="guidAceJumpCommandPackageCmdSet" value="{20929872-63f6-48df-bc23-04798035c26f}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="AceJumpCommandId" value="0x0100" />
+      <IDSymbol name="AceJumpWordCommandId" value="0x0101" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{e061440b-67ea-4748-b6e5-5123584687b8}" >
